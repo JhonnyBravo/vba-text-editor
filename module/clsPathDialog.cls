@@ -7,7 +7,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-Option Compare Database
 Option Explicit
 
 Private objFD As FileDialog
@@ -119,7 +118,7 @@ Public Function getPath() As String
     '--▲ ------
     
     With objFD
-        .InitialFileName = Application.CurrentProject.path
+        .InitialFileName = ActiveWorkbook.path
         .AllowMultiSelect = False
         
         If .Show = -1 Then
