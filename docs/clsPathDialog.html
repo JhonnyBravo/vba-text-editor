@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>clsPathDialog</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="text-center text-white bg-dark">
+                <h1>clsPathDialog</h1>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="list-group">
+                        <a href="index.html" class="list-group-item list-group-item-action">Module</a>
+                        <a href="clsDirectory.html" class="list-group-item list-group-item-action">clsDirectory</a>
+                        <a href="clsFile.html" class="list-group-item list-group-item-action">clsFile</a>
+                        <a href="clsPath.html" class="list-group-item list-group-item-action">clsPath</a>
+                        <a href="clsPathDialog.html" class="list-group-item list-group-item-action">clsPathDialog</a>
+                        <a href="clsRegExp.html" class="list-group-item list-group-item-action disabled">clsRegExp</a>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h2>Property</h2>
+                    <div class="card">
+                        <h3 class="card-header">code</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public Long code
+                            </p>
+                            <p class="card-text">
+                                コマンド終了直後の終了コードを返す。
+                            </p>
+                            <ul>
+                                <li>0: 変更も異常もなく終了したことを表す。</li>
+                                <li>1: 異常終了したことを表す。</li>
+                                <li>2: 操作対象に対して何らかの変更を加えて正常終了したことを表す。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">message</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String message
+                            </p>
+                            <p class="card-text">
+                                コマンド終了直後の終了メッセージを返す。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">pathType</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String Let pathType
+                            </p>
+                            <p class="card-text">
+                                呼び出すダイアログの種類を指定する。
+                            </p>
+                            <ul>
+                                <li>file: ファイルピッカーを呼び出す。</li>
+                                <li>directory: フォルダーピッカーを呼び出す。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">extensionFilter</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public Collection extensionFilter
+                            </p>
+                            <p class="card-text">
+                                ファイルピッカー向けの拡張子フィルターを設定する。下記の形式の配列でフィルターを定義する。
+                            </p>
+                        <pre><code>Array(Description, ExtensionList)</code></pre>
+                        <ul>
+                            <li>Description: フィルターの説明。</li>
+                            <li>ExtensionList: 表示を許可する拡張子のリスト。</li>
+                        </ul>
+                    </div>
+                </div>
+                <h2>Method</h2>
+                <div class="card">
+                    <h3 class="card-header">getPath()</h3>
+                    <div class="card-body">
+                        <p class="card-title">
+                            Public String getPath()
+                        </p>
+                        <p class="card-text">
+                            ファイルピッカーまたはフォルダーピッカーを起動し、
+                            選択したファイルまたはフォルダーのパスを返す。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

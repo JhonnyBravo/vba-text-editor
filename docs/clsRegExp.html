@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>clsRegExp</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="text-center text-white bg-dark">
+                <h1>clsRegExp</h1>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="list-group">
+                        <a href="index.html" class="list-group-item list-group-item-action">Module</a>
+                        <a href="clsDirectory.html" class="list-group-item list-group-item-action">clsDirectory</a>
+                        <a href="clsFile.html" class="list-group-item list-group-item-action">clsFile</a>
+                        <a href="clsPath.html" class="list-group-item list-group-item-action">clsPath</a>
+                        <a href="clsPathDialog.html" class="list-group-item list-group-item-action">clsPathDialog</a>
+                        <a href="clsRegExp.html" class="list-group-item list-group-item-action disabled">clsRegExp</a>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h2>Property</h2>
+                    <div class="card">
+                        <h3 class="card-header">code</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public Long code
+                            </p>
+                            <p class="card-text">
+                                コマンド終了直後の終了コードを返す。
+                            </p>
+                            <ul>
+                                <li>0: 変更も異常もなく終了したことを表す。</li>
+                                <li>1: 異常終了したことを表す。</li>
+                                <li>2: 操作対象に対して何らかの変更を加えて正常終了したことを表す。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">message</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String message
+                            </p>
+                            <p class="card-text">
+                                コマンド終了直後の終了メッセージを返す。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">path</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String path
+                            </p>
+                            <p class="card-text">
+                                操作対象とするファイルのパスを指定する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">destination</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String destination
+                            </p>
+                            <p class="card-text">
+                                出力先となるファイルのパスを指定する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">pattern</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String pattern
+                            </p>
+                            <p class="card-text">
+                                操作対象とする文字列の検索パターンを正規表現で指定する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">replacement</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public String replacement
+                            </p>
+                            <p class="card-text">
+                                置換後の文字列、または挿入する文字列を指定する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">globalMatch</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public Boolean globalMatch
+                            </p>
+                            <p class="card-text">
+                                文字列全体を操作対象とするかどうかを指定する。
+                            </p>
+                            <ul>
+                                <li>False: 検索パターンに最初に合致した文字列のみを操作対象とする。(既定値)</li>
+                                <li>True: 検索パターンに合致した文字列全てを操作対象とする。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h2>Method</h2>
+                    <div class="card">
+                        <h3 class="card-header">selectString()</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public selectString()
+                            </p>
+                            <p class="card-text">
+                                検索パターンに合致する文字列を持つ行を新しいファイルへ書き出す。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">deleteString()</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public deleteString()
+                            </p>
+                            <p class="card-text">
+                                検索パターンに合致する文字列を持つ行を削除する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">replaceSubString()</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public replaceSubString()
+                            </p>
+                            <p class="card-text">
+                                検索パターンに合致する部分文字列を置換して新しいファイルへ書き出す。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">replaceString()</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public replaceString()
+                            </p>
+                            <p class="card-text">
+                                検索パターンに合致する文字列を持つ行全体を新しい文字列に置換する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">insertString()</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public insertString()
+                            </p>
+                            <p class="card-text">
+                                検索パターンに合致する文字列を持つ行の直前に新しい行を挿入する。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-header">addString()</h3>
+                        <div class="card-body">
+                            <p class="card-title">
+                                Public addString()
+                            </p>
+                            <p class="card-text">
+                                検索パターンに合致する文字列を持つ行の直後に新しい行を挿入する。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
