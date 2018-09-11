@@ -1,4 +1,4 @@
-﻿VERSION 1.0 CLASS
+VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
@@ -36,42 +36,43 @@ Private Sub btnEdit_Click()
         strDirPath = ActiveWorkbook.path
         strDstPath = strDirPath & "\output"
         
-        Dim objDirectory As New clsDirectory
-        Dim objFile As New clsFile
+        Dim objCD As New CreateDirectory
         
-        With objDirectory
-            .path = strDstPath
-            .create
+        With objCD
+            .runCommand strDstPath
             
             If .code = 1 Then
                 Exit Sub
             End If
         End With
         
-        Dim objPath As New clsPath
-        Dim strBasePath As String
+        Dim objGBN As New GetBaseName
+        Dim strBaseName As String
         
-        With objPath
-            .path = strSrcPath
-            strBasePath = .getBaseName
-        End With
-        
-        With objFile
-            .path = strSrcPath
-            .destination = strDstPath & "\" & strBasePath
-            .copy
+        With objGBN
+            strBaseName = .runCommand(strSrcPath)
             
             If .code = 1 Then
                 Exit Sub
             End If
         End With
 
+        Dim objFC As New FileController
+        
+        With objFC
+            .copy strSrcPath, strDstPath & "\" & strBaseName
+            
+            If .code = 1 Then
+                Exit Sub
+            End If
+        End With
+        
         strRecordEnd = .Range("B6").End(xlDown).Address(False, False)
         Set objRange = .Range(strRecordEnd, "E6")
         varActions = objRange
         lngRowMax = UBound(varActions)
         
-        Dim objRegExp As New clsRegExp
+        Dim objREC As New RegExpController
         Dim strAction As String
         Dim strPattern As String
         Dim strReplacement As String
@@ -82,174 +83,120 @@ Private Sub btnEdit_Click()
             strPattern = varActions(lngRow, 2)
             strReplacement = varActions(lngRow, 3)
             
+            With objFC
+                .create strDstPath & "\tmp.txt"
+                
+                If .code = 1 Then
+                    Exit Sub
+                End If
+            End With
+            
             Select Case LCase(strAction)
                 Case "grep"
-                    With objRegExp
-                        .path = strDstPath & "\" & strBasePath
-                        .destination = strDstPath & "\tmp.txt"
-                        .pattern = strPattern
-                        .selectString
+                    With objREC
+                        .selectString strDstPath & "\" & strBaseName, strDstPath & "\tmp.txt", strPattern
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                     
-                    With objFile
-                        .path = strDstPath & "\tmp.txt"
-                        .destination = strDstPath & "\" & strBasePath
-                        .copy
-                        
-                        If .code = 1 Then
-                            Exit Sub
-                        End If
-                        
-                        .delete
+                    With objFC
+                        .copy strDstPath & "\tmp.txt", strDstPath & "\" & strBaseName
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                 Case "delete"
-                    With objRegExp
-                        .path = strDstPath & "\" & strBasePath
-                        .destination = strDstPath & "\tmp.txt"
-                        .pattern = strPattern
-                        .deleteString
+                    With objREC
+                        .deleteString strDstPath & "\" & strBaseName, strDstPath & "\tmp.txt", strPattern
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                     
-                    With objFile
-                        .path = strDstPath & "\tmp.txt"
-                        .destination = strDstPath & "\" & strBasePath
-                        .copy
-                        
-                        If .code = 1 Then
-                            Exit Sub
-                        End If
-                        
-                        .delete
+                    With objFC
+                        .copy strDstPath & "\tmp.txt", strDstPath & "\" & strBaseName
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                 Case "replace"
-                    With objRegExp
-                        .path = strDstPath & "\" & strBasePath
-                        .destination = strDstPath & "\tmp.txt"
-                        .pattern = strPattern
-                        .replacement = strReplacement
-                        .replaceSubString
+                    With objREC
+                        .replaceSubString strDstPath & "\" & strBaseName, strDstPath & "\tmp.txt", strPattern, strReplacement
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                     
-                    With objFile
-                        .path = strDstPath & "\tmp.txt"
-                        .destination = strDstPath & "\" & strBasePath
-                        .copy
-                        
-                        If .code = 1 Then
-                            Exit Sub
-                        End If
-                        
-                        .delete
+                    With objFC
+                        .copy strDstPath & "\tmp.txt", strDstPath & "\" & strBaseName
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                 Case "change"
-                    With objRegExp
-                        .path = strDstPath & "\" & strBasePath
-                        .destination = strDstPath & "\tmp.txt"
-                        .pattern = strPattern
-                        .replacement = strReplacement
-                        .replaceString
+                    With objREC
+                        .replaceString strDstPath & "\" & strBaseName, strDstPath & "\tmp.txt", strPattern, strReplacement
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                     
-                    With objFile
-                        .path = strDstPath & "\tmp.txt"
-                        .destination = strDstPath & "\" & strBasePath
-                        .copy
-                        
-                        If .code = 1 Then
-                            Exit Sub
-                        End If
-                        
-                        .delete
+                    With objFC
+                        .copy strDstPath & "\tmp.txt", strDstPath & "\" & strBaseName
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                 Case "insert"
-                    With objRegExp
-                        .path = strDstPath & "\" & strBasePath
-                        .destination = strDstPath & "\tmp.txt"
-                        .pattern = strPattern
-                        .replacement = strReplacement
-                        .insertString
+                    With objREC
+                        .insertString strDstPath & "\" & strBaseName, strDstPath & "\tmp.txt", strPattern, strReplacement
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                     
-                    With objFile
-                        .path = strDstPath & "\tmp.txt"
-                        .destination = strDstPath & "\" & strBasePath
-                        .copy
-                        
-                        If .code = 1 Then
-                            Exit Sub
-                        End If
-                        
-                        .delete
+                    With objFC
+                        .copy strDstPath & "\tmp.txt", strDstPath & "\" & strBaseName
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                 Case "add"
-                    With objRegExp
-                        .path = strDstPath & "\" & strBasePath
-                        .destination = strDstPath & "\tmp.txt"
-                        .pattern = strPattern
-                        .replacement = strReplacement
-                        .addString
+                    With objREC
+                        .addString strDstPath & "\" & strBaseName, strDstPath & "\tmp.txt", strPattern, strReplacement
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
                     
-                    With objFile
-                        .path = strDstPath & "\tmp.txt"
-                        .destination = strDstPath & "\" & strBasePath
-                        .copy
-                        
-                        If .code = 1 Then
-                            Exit Sub
-                        End If
-                        
-                        .delete
+                    With objFC
+                        .copy strDstPath & "\tmp.txt", strDstPath & "\" & strBaseName
                         
                         If .code = 1 Then
                             Exit Sub
                         End If
                     End With
             End Select
+            
+            With objFC
+                .delete strDstPath & "\tmp.txt"
+                
+                If .code = 1 Then
+                    Exit Sub
+                End If
+            End With
         Next
     End With
     
@@ -257,12 +204,11 @@ Private Sub btnEdit_Click()
 End Sub
 
 Private Sub btnGetPath_Click()
-    Dim objPD As New clsPathDialog
+    Dim objGFP As New GetFilePath
     Dim strPath As String
     
-    With objPD
-        .pathType = "file"
-        strPath = .getPath
+    With objGFP
+        strPath = .runCommand
         
         If .code = 2 Then
             Sheets("Main").Range("C2").Value = strPath
