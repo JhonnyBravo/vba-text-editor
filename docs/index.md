@@ -1,0 +1,21 @@
+# vba-text-editor
+## Modules
+
+* [StatusController](StatusController)
+* [DialogController](DialogController)
+  * [GetDirectoryPath](GetDirectoryPath)
+  * [GetFilePath](GetFilePath)
+* [FileController](FileController)
+  * [CopyFile](CopyFile)
+  * [CreateFile](CreateFile)
+  * [DeleteFile](DeleteFile)
+* [GetBaseName](GetBaseName)
+* [CreateDirectory](CreateDirectory)
+* [RegExpController](RegExpController)
+  * [GetTextStream](GetTextStream)
+  * [SelectString](SelectString)
+  * [DeleteString](DeleteString)
+  * [AddString](AddString)
+  * [InsertString](InsertString)
+  * [ReplaceString](ReplaceString)
+  * [ReplaceSubString](ReplaceSubString)
