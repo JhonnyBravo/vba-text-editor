@@ -1,4 +1,4 @@
-VERSION 1.0 CLASS
+﻿VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
@@ -67,8 +67,13 @@ Private Sub btnEdit_Click()
             End If
         End With
         
-        strRecordEnd = .Range("B6").End(xlDown).Address(False, False)
-        Set objRange = .Range(strRecordEnd, "E6")
+        If .Range("B7").Value = "" Then
+            Set objRange = .Range("B6", "D6")
+        Else
+            strRecordEnd = .Range("B6").End(xlDown).Address(False, False)
+            Set objRange = .Range(strRecordEnd, "E6")
+        End If
+        
         varActions = objRange
         lngRowMax = UBound(varActions)
         
